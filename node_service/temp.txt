@@ -1,0 +1,452 @@
+@opentelemetry/instrumentation-http outgoingRequest on request close()
+@opentelemetry/instrumentation-http http instrumentation incomingRequest
+@opentelemetry/instrumentation-fastify Patching fastify reply.send function
+@opentelemetry/instrumentation-http http instrumentation outgoingRequest
+@opentelemetry/instrumentation-http http.ClientRequest return request
+@opentelemetry/instrumentation-http outgoingRequest on response()
+@opentelemetry/instrumentation-http outgoingRequest on end()
+@opentelemetry/instrumentation-http outgoingRequest on request close()
+items to be sent [
+  Span {
+    attributes: {
+      'fastify.type': 'middleware',
+      'plugin.name': 'fastify-compress -> fastify-metrics',
+      'hook.name': 'onRequest'
+    },
+    links: [],
+    events: [],
+    status: { code: 0 },
+    endTime: [ 1670443280, 750267408 ],
+    _ended: true,
+    _duration: [ 0, 460787 ],
+    _clock: Performance {
+      nodeTiming: PerformanceNodeTiming {
+        name: 'node',
+        entryType: 'node',
+        startTime: 0,
+        duration: 68145.5675330013,
+        nodeStart: 3.303645998239517,
+        v8Start: 4.538732998073101,
+        bootstrapComplete: 1010.9936939999461,
+        environment: 19.356942996382713,
+        loopStart: 3547.143789999187,
+        loopExit: -1,
+        idleTime: 63681.569888
+      },
+      timeOrigin: 1670443217605.462
+    },
+    name: 'middleware - anonymous',
+    _spanContext: {
+      traceId: 'be7cad3a107de4caeedfd62c6abf16fb',
+      spanId: '72188b3c34eb03b8',
+      traceFlags: 1,
+      traceState: undefined
+    },
+    parentSpanId: '769425469a82ecea',
+    kind: 0,
+    startTime: [ 1670443280, 749806621 ],
+    resource: Resource { attributes: [Object] },
+    instrumentationLibrary: {
+      name: '@opentelemetry/instrumentation-fastify',
+      version: '0.31.0',
+      schemaUrl: undefined
+    },
+    _spanLimits: {
+      attributeValueLengthLimit: Infinity,
+      attributeCountLimit: 128,
+      linkCountLimit: 128,
+      eventCountLimit: 128
+    },
+    _spanProcessor: MultiSpanProcessor { _spanProcessors: [Array] },
+    _attributeValueLengthLimit: Infinity
+  },
+  Span {
+    attributes: {},
+    links: [],
+    events: [],
+    status: { code: 0 },
+    endTime: [ 1670443280, 752084347 ],
+    _ended: true,
+    _duration: [ 0, 22238 ],
+    _clock: Performance {
+      nodeTiming: PerformanceNodeTiming {
+        name: 'node',
+        entryType: 'node',
+        startTime: 0,
+        duration: 68146.08358799666,
+        nodeStart: 3.303645998239517,
+        v8Start: 4.538732998073101,
+        bootstrapComplete: 1010.9936939999461,
+        environment: 19.356942996382713,
+        loopStart: 3547.143789999187,
+        loopExit: -1,
+        idleTime: 63681.569888
+      },
+      timeOrigin: 1670443217605.462
+    },
+    name: 'childSpan',
+    _spanContext: {
+      traceId: 'be7cad3a107de4caeedfd62c6abf16fb',
+      spanId: 'e0d1084cbb58eab6',
+      traceFlags: 1,
+      traceState: undefined
+    },
+    parentSpanId: 'a6f2f641b1896d52',
+    kind: 0,
+    startTime: [ 1670443280, 752062109 ],
+    resource: Resource { attributes: [Object] },
+    instrumentationLibrary: {
+      name: 'my-service-tracer',
+      version: undefined,
+      schemaUrl: undefined
+    },
+    _spanLimits: {
+      attributeValueLengthLimit: Infinity,
+      attributeCountLimit: 128,
+      linkCountLimit: 128,
+      eventCountLimit: 128
+    },
+    _spanProcessor: MultiSpanProcessor { _spanProcessors: [Array] },
+    _attributeValueLengthLimit: Infinity
+  },
+  Span {
+    attributes: { key: 'value' },
+    links: [],
+    events: [ [Object] ],
+    status: { code: 0 },
+    endTime: [ 1670443280, 752235272 ],
+    _ended: true,
+    _duration: [ 0, 100258 ],
+    _clock: Performance {
+      nodeTiming: PerformanceNodeTiming {
+        name: 'node',
+        entryType: 'node',
+        startTime: 0,
+        duration: 68146.28974799812,
+        nodeStart: 3.303645998239517,
+        v8Start: 4.538732998073101,
+        bootstrapComplete: 1010.9936939999461,
+        environment: 19.356942996382713,
+        loopStart: 3547.143789999187,
+        loopExit: -1,
+        idleTime: 63681.569888
+      },
+      timeOrigin: 1670443217605.462
+    },
+    name: 'handleRequest',
+    _spanContext: {
+      traceId: 'be7cad3a107de4caeedfd62c6abf16fb',
+      spanId: '1b687c811e58a17c',
+      traceFlags: 1,
+      traceState: undefined
+    },
+    parentSpanId: 'c63fd30100fe43e4',
+    kind: 1,
+    startTime: [ 1670443280, 752135014 ],
+    resource: Resource { attributes: [Object] },
+    instrumentationLibrary: {
+      name: 'my-service-tracer',
+      version: undefined,
+      schemaUrl: undefined
+    },
+    _spanLimits: {
+      attributeValueLengthLimit: Infinity,
+      attributeCountLimit: 128,
+      linkCountLimit: 128,
+      eventCountLimit: 128
+    },
+    _spanProcessor: MultiSpanProcessor { _spanProcessors: [Array] },
+    _attributeValueLengthLimit: Infinity
+  },
+  Span {
+    attributes: {
+      'plugin.name': 'fastify-compress -> fastify-metrics',
+      'fastify.type': 'request_handler',
+      'http.route': '/metrics'
+    },
+    links: [],
+    events: [],
+    status: { code: 0 },
+    endTime: [ 1670443280, 766618284 ],
+    _ended: true,
+    _duration: [ 0, 15562456 ],
+    _clock: Performance {
+      nodeTiming: PerformanceNodeTiming {
+        name: 'node',
+        entryType: 'node',
+        startTime: 0,
+        duration: 68146.5188620016,
+        nodeStart: 3.303645998239517,
+        v8Start: 4.538732998073101,
+        bootstrapComplete: 1010.9936939999461,
+        environment: 19.356942996382713,
+        loopStart: 3547.143789999187,
+        loopExit: -1,
+        idleTime: 63681.569888
+      },
+      timeOrigin: 1670443217605.462
+    },
+    name: 'request handler - anonymous',
+    _spanContext: {
+      traceId: 'be7cad3a107de4caeedfd62c6abf16fb',
+      spanId: 'c63fd30100fe43e4',
+      traceFlags: 1,
+      traceState: undefined
+    },
+    parentSpanId: '72188b3c34eb03b8',
+    kind: 0,
+    startTime: [ 1670443280, 751055828 ],
+    resource: Resource { attributes: [Object] },
+    instrumentationLibrary: {
+      name: '@opentelemetry/instrumentation-fastify',
+      version: '0.31.0',
+      schemaUrl: undefined
+    },
+    _spanLimits: {
+      attributeValueLengthLimit: Infinity,
+      attributeCountLimit: 128,
+      linkCountLimit: 128,
+      eventCountLimit: 128
+    },
+    _spanProcessor: MultiSpanProcessor { _spanProcessors: [Array] },
+    _attributeValueLengthLimit: Infinity
+  },
+  Span {
+    attributes: {
+      'net.transport': 'ip_tcp',
+      'net.peer.name': '127.0.0.1',
+      'net.peer.port': '7000',
+      'net.peer.ip': '127.0.0.1',
+      'net.host.ip': '127.0.0.1',
+      'net.host.port': 58498
+    },
+    links: [],
+    events: [],
+    status: { code: 0 },
+    endTime: [ 1670443280, 771376977 ],
+    _ended: true,
+    _duration: [ 0, 16781977 ],
+    _clock: Performance {
+      nodeTiming: PerformanceNodeTiming {
+        name: 'node',
+        entryType: 'node',
+        startTime: 0,
+        duration: 68146.68348000199,
+        nodeStart: 3.303645998239517,
+        v8Start: 4.538732998073101,
+        bootstrapComplete: 1010.9936939999461,
+        environment: 19.356942996382713,
+        loopStart: 3547.143789999187,
+        loopExit: -1,
+        idleTime: 63681.569888
+      },
+      timeOrigin: 1670443217605.462
+    },
+    name: 'tcp.connect',
+    _spanContext: {
+      traceId: 'be7cad3a107de4caeedfd62c6abf16fb',
+      spanId: '188ebb8305319a8c',
+      traceFlags: 1,
+      traceState: undefined
+    },
+    parentSpanId: '82aead295bce7897',
+    kind: 0,
+    startTime: [ 1670443280, 754595000 ],
+    resource: Resource { attributes: [Object] },
+    instrumentationLibrary: {
+      name: '@opentelemetry/instrumentation-net',
+      version: '0.31.0',
+      schemaUrl: undefined
+    },
+    _spanLimits: {
+      attributeValueLengthLimit: Infinity,
+      attributeCountLimit: 128,
+      linkCountLimit: 128,
+      eventCountLimit: 128
+    },
+    _spanProcessor: MultiSpanProcessor { _spanProcessors: [Array] },
+    _attributeValueLengthLimit: Infinity
+  },
+  Span {
+    attributes: {
+      'http.url': 'http://localhost:4000/metrics',
+      'http.host': 'localhost:4000',
+      'net.host.name': 'localhost',
+      'http.method': 'GET',
+      'http.scheme': 'http',
+      'http.target': '/metrics',
+      'http.user_agent': 'python-requests/2.28.1',
+      'http.flavor': '1.1',
+      'net.transport': 'ip_tcp',
+      'http.route': '/metrics',
+      'net.host.ip': '::1',
+      'net.host.port': 4000,
+      'net.peer.ip': '::1',
+      'net.peer.port': 58497,
+      'http.status_code': 200,
+      'http.status_text': 'OK'
+    },
+    links: [],
+    events: [],
+    status: { code: 0 },
+    endTime: [ 1670443280, 814790234 ],
+    _ended: true,
+    _duration: [ 0, 66718932 ],
+    _clock: Performance {
+      nodeTiming: PerformanceNodeTiming {
+        name: 'node',
+        entryType: 'node',
+        startTime: 0,
+        duration: 68146.93111599982,
+        nodeStart: 3.303645998239517,
+        v8Start: 4.538732998073101,
+        bootstrapComplete: 1010.9936939999461,
+        environment: 19.356942996382713,
+        loopStart: 3547.143789999187,
+        loopExit: -1,
+        idleTime: 63681.569888
+      },
+      timeOrigin: 1670443217605.462
+    },
+    name: 'GET /metrics',
+    _spanContext: {
+      traceId: 'be7cad3a107de4caeedfd62c6abf16fb',
+      spanId: '769425469a82ecea',
+      traceFlags: 1,
+      traceState: undefined
+    },
+    parentSpanId: 'a6f2f641b1896d52',
+    kind: 1,
+    startTime: [ 1670443280, 748071302 ],
+    resource: Resource { attributes: [Object] },
+    instrumentationLibrary: {
+      name: '@opentelemetry/instrumentation-http',
+      version: '0.34.0',
+      schemaUrl: undefined
+    },
+    _spanLimits: {
+      attributeValueLengthLimit: Infinity,
+      attributeCountLimit: 128,
+      linkCountLimit: 128,
+      eventCountLimit: 128
+    },
+    _spanProcessor: MultiSpanProcessor { _spanProcessors: [Array] },
+    _attributeValueLengthLimit: Infinity
+  },
+  Span {
+    attributes: {
+      'fastify.type': 'middleware',
+      'plugin.name': 'fastify-compress -> fastify-metrics',
+      'hook.name': 'onResponse'
+    },
+    links: [],
+    events: [],
+    status: { code: 0 },
+    endTime: [ 1670443280, 816266079 ],
+    _ended: true,
+    _duration: [ 0, 639893 ],
+    _clock: Performance {
+      nodeTiming: PerformanceNodeTiming {
+        name: 'node',
+        entryType: 'node',
+        startTime: 0,
+        duration: 68147.18056699634,
+        nodeStart: 3.303645998239517,
+        v8Start: 4.538732998073101,
+        bootstrapComplete: 1010.9936939999461,
+        environment: 19.356942996382713,
+        loopStart: 3547.143789999187,
+        loopExit: -1,
+        idleTime: 63681.569888
+      },
+      timeOrigin: 1670443217605.462
+    },
+    name: 'middleware - anonymous',
+    _spanContext: {
+      traceId: 'be7cad3a107de4caeedfd62c6abf16fb',
+      spanId: '33d1d25c80d7876c',
+      traceFlags: 1,
+      traceState: undefined
+    },
+    parentSpanId: '769425469a82ecea',
+    kind: 0,
+    startTime: [ 1670443280, 815626186 ],
+    resource: Resource { attributes: [Object] },
+    instrumentationLibrary: {
+      name: '@opentelemetry/instrumentation-fastify',
+      version: '0.31.0',
+      schemaUrl: undefined
+    },
+    _spanLimits: {
+      attributeValueLengthLimit: Infinity,
+      attributeCountLimit: 128,
+      linkCountLimit: 128,
+      eventCountLimit: 128
+    },
+    _spanProcessor: MultiSpanProcessor { _spanProcessors: [Array] },
+    _attributeValueLengthLimit: Infinity
+  },
+  Span {
+    attributes: {
+      'http.url': 'http://127.0.0.1:7000/gateway',
+      'http.method': 'GET',
+      'http.target': '/gateway',
+      'net.peer.name': '127.0.0.1',
+      'http.host': '127.0.0.1:7000',
+      'http.user_agent': [Array],
+      'net.peer.ip': '127.0.0.1',
+      'net.peer.port': 7000,
+      'http.response_content_length_uncompressed': 11,
+      'http.status_code': 200,
+      'http.status_text': 'OK',
+      'http.flavor': '1.1',
+      'net.transport': 'ip_tcp'
+    },
+    links: [],
+    events: [],
+    status: { code: 0 },
+    endTime: [ 1670443280, 821029299 ],
+    _ended: true,
+    _duration: [ 0, 67112618 ],
+    _clock: Performance {
+      nodeTiming: PerformanceNodeTiming {
+        name: 'node',
+        entryType: 'node',
+        startTime: 0,
+        duration: 68147.35811799765,
+        nodeStart: 3.303645998239517,
+        v8Start: 4.538732998073101,
+        bootstrapComplete: 1010.9936939999461,
+        environment: 19.356942996382713,
+        loopStart: 3547.143789999187,
+        loopExit: -1,
+        idleTime: 63681.569888
+      },
+      timeOrigin: 1670443217605.462
+    },
+    name: 'HTTP GET',
+    _spanContext: {
+      traceId: 'be7cad3a107de4caeedfd62c6abf16fb',
+      spanId: '82aead295bce7897',
+      traceFlags: 1,
+      traceState: undefined
+    },
+    parentSpanId: 'c63fd30100fe43e4',
+    kind: 2,
+    startTime: [ 1670443280, 753916681 ],
+    resource: Resource { attributes: [Object] },
+    instrumentationLibrary: {
+      name: '@opentelemetry/instrumentation-http',
+      version: '0.34.0',
+      schemaUrl: undefined
+    },
+    _spanLimits: {
+      attributeValueLengthLimit: Infinity,
+      attributeCountLimit: 128,
+      linkCountLimit: 128,
+      eventCountLimit: 128
+    },
+    _spanProcessor: MultiSpanProcessor { _spanProcessors: [Array] },
+    _attributeValueLengthLimit: Infinity
+  }
+]
