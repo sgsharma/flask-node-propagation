@@ -7,6 +7,7 @@ const { HttpInstrumentation } = require ('@opentelemetry/instrumentation-http');
 const { getNodeAutoInstrumentations } = require("@opentelemetry/auto-instrumentations-node");
 const { ExpressInstrumentation } = require ('@opentelemetry/instrumentation-express');
 const { FetchInstrumentation } = require ('@opentelemetry/instrumentation-fetch');
+const { ZoneContextManager } = require ('@opentelemetry/context-zone');
 
 // const { GraphQLInstrumentation } = require ('@opentelemetry/instrumentation-graphql');
 
@@ -18,7 +19,9 @@ const provider = new NodeTracerProvider({
 
 // Configure a test exporter to print all traces to the console
 const exporter = new OTLPTraceExporter({
-    headers: {"x-honeycomb-team": process.env.HONEYCOMB_API_KEY}
+    url: "https://api.honeycomb.io/v1/traces",
+    headers: {"x-honeycomb-team": process.env.HONEYCOMB_API_KEY},
+    contextManager: new ZoneContextManager(),
 });
 
 provider.addSpanProcessor(
@@ -31,8 +34,9 @@ provider.register();
 
 registerInstrumentations({
   instrumentations: [
-    // new ExpressInstrumentation(),
-    // new FetchInstrumentation(),
-    new HttpInstrumentation(),
+    // new getNodeAutoInstrumentations(),
+    new FetchInstrumentation(),
+    new ExpressInstrumentation(),
+    new HttpInstrumentation()
   ]
 });

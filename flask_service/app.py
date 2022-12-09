@@ -1,13 +1,16 @@
+import opentelemetry.sdk.trace.sampling as sampler_class
+import requests
 from flask import Flask, request
+from opentelemetry import trace
+from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import \
+    OTLPSpanExporter
 from opentelemetry.instrumentation.flask import FlaskInstrumentor
 from opentelemetry.instrumentation.requests import RequestsInstrumentor
-from opentelemetry.exporter.otlp.proto.grpc.trace_exporter import OTLPSpanExporter
-from opentelemetry.sdk.trace.export import ConsoleSpanExporter
 from opentelemetry.sdk.trace import TracerProvider
-from opentelemetry.sdk.trace.export import BatchSpanProcessor
-import opentelemetry.sdk.trace.sampling as sampler_class
-from opentelemetry import trace
-import requests
+from opentelemetry.sdk.trace.export import (BatchSpanProcessor,
+                                            ConsoleSpanExporter)
+from opentelemetry.trace.propagation.tracecontext import \
+    TraceContextTextMapPropagator
 
 NUMBER = 0
 # OTEL_EXPORTER_OTLP_ENDPOINT="https://api.honeycomb.io/" OTEL_EXPORTER_OTLP_HEADERS="x-honeycomb-team=<>" OTEL_SERVICE_NAME="flask_service_1" python app.py
@@ -19,7 +22,7 @@ trace.set_tracer_provider(provider)
 processor = BatchSpanProcessor(OTLPSpanExporter())
 provider.add_span_processor(processor)
 provider.add_span_processor(BatchSpanProcessor(ConsoleSpanExporter()))
-# tracer = trace.get_tracer(__name__)
+tracer = trace.get_tracer(__name__)
  
 app = Flask(__name__)
  
@@ -52,13 +55,29 @@ def google():
 
 @app.route('/metrics')
 def metrics():
-    requests.get("http://localhost:4000/metrics")
-    return 'Google'
+    with tracer.start_as_current_span("client operation"):
+        try:
+            carrier = {}
+            TraceContextTextMapPropagator().inject(carrier)
+            header = {"traceparent": carrier["traceparent"]}
+            requests.get("http://localhost:4000/metric", headers=header)
+            return 'Google'
+        except Exception as e:
+            print(f"Request to /metrics failed {e}")
+            pass
 
 @app.route('/gateway')
 def gateway():
-    print(request.headers)
-    return f'Hello World'
+    with tracer.start_as_current_span("gateway operation"):
+        try:
+            carrier = {}
+            TraceContextTextMapPropagator().inject(carrier)
+            header = {"traceparent": carrier["traceparent"]}
+            print(request.headers)
+            return f'Hello World'
+        except Exception as e:
+            print(f"Request to /gateway failed {e}")
+            pass
  
 def request_hook(span, environ):
     if span and span.is_recording():
